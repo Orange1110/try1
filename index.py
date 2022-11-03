@@ -57,6 +57,11 @@ def account():
 @app.route("/read", methods=["GET", "POST"])
 def read():
 
+    collection_ref = db.collection("111")
+    docs = collection_ref.get()
+    for doc in docs:
+        dict = doc.to_dict()
+        
     if request.method == "POST":
 
         keyword = request.form["keyword"]
