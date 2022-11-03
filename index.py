@@ -59,7 +59,7 @@ def account():
 def read():
     Result = ""
     collection_ref = db.collection("111")
-    docs = collection_ref.get()
+    docs = collection_ref.get(dict["Course"])
     for doc in docs:
         Result += "文件內容：{}".format(doc.to_dict()) + "<br>"
     return Result
