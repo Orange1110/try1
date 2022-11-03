@@ -52,22 +52,27 @@ def account():
         return result
 
     else:
-
         return render_template("account.html")
 
 @app.route("/read", methods=["GET", "POST"])
 def read():
+
+    Result = ""
+    collection_ref = db.collection("111")
+    docs = collection_ref.get()
+
     if request.method == "POST":
-        keyword = request.form["keyword"] 
+        keyword = request.form["keyword"]
+        
+    for doc in docs:
+        dict = doc.to_dict()
+        if keyword in dict["Course"]:
+            Result += format(dict["Leacture"])+"老師開的"+format(dict["Course"])+"課程,每週"+format(dict["Time"])+"於"+format(dict["Room"])+"上課"
+        result = "您輸入的帳號是：" + user + "; 密碼為：" + pwd
 
-        Result = ""
-        collection_ref = db.collection("111")
-        docs = collection_ref.get()
+    return result
 
-        for doc in docs:
-            Result += "文件內容：{}".format(doc.to_dict()) + "<br>"
-    return Result
     else:
-        return render_template("read.html") 
+        return render_template("account.html") 
 #if __name__ == "__main__":
  #   app.run()
