@@ -59,11 +59,7 @@ def read():
 
     if request.method == "POST":
         keyword = request.form["keyword"]
-
-    collection_ref = db.collection("111")
-    docs = collection_ref.get()
-
-    result = keyword
+        result = keyword
 
     return result
     else:
