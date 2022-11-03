@@ -60,14 +60,14 @@ def read():
     if request.method == "POST":
         keyword = request.form["keyword"] 
 
-    Result = ""
-    collection_ref = db.collection("111")
-    docs = collection_ref.get()
-    for doc in docs:
-        Result += "文件內容：{}".format(doc.to_dict()) + "<br>"
-    return Result
-   else:
+        Result = ""
+        collection_ref = db.collection("111")
+        docs = collection_ref.get()
 
+        for doc in docs:
+            Result += "文件內容：{}".format(doc.to_dict()) + "<br>"
+    return Result
+    else:
         return render_template("read.html") 
 #if __name__ == "__main__":
  #   app.run()
