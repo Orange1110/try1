@@ -65,7 +65,7 @@ def read():
         for doc in docs:
             dict = doc.to_dict()
             if keyword in dict["Course"]:
-                result += format(dict["Leacture"])+"老師開的"+format(dict["Course"])+"課程,每週"+format(dict["Time"])+"於"+format(dict["Room"])+"上課<br>"
+                result += format(dict["Leacture"])+"老師開的"+format(dict["Course"])+"課程,每週"+format(dict["Time"])+"於"+format(dict["Room"])+"上課"<br>
 
         return result
     else:
