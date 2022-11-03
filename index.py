@@ -68,9 +68,9 @@ def read():
         dict = doc.to_dict()
         if keyword in dict["Course"]:
             Result += format(dict["Leacture"])+"老師開的"+format(dict["Course"])+"課程,每週"+format(dict["Time"])+"於"+format(dict["Room"])+"上課"
-        result = "您輸入的帳號是：" + user + "; 密碼為：" + pwd
+       
 
-    return result
+    return Result
 
     else:
         return render_template("account.html") 
