@@ -55,7 +55,7 @@ def account():
 
         return render_template("account.html")
 
-@app.route("/read")
+@app.route("/read", methods=["GET", "POST"])
 def read():
     if request.method == "POST":
         keyword = request.form["keyword"] 
