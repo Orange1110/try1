@@ -16,8 +16,7 @@ def index():
     homepage += "<a href=/today>顯示日期時間</a><br>"
     homepage += "<a href=/welcome?nick=tcyang>傳送使用者暱稱</a><br>"
     homepage += "<a href=/about>許梓揚簡介網頁</a><br>"
-    homepage += "<br><a href=/account>網頁表單輸入實例</a><br>"
-    homepage += "<br><a href=/read>選修課程查詢</a><br>"
+    homepage += "<br><a href=/read>讀取Firestore資料</a><br>"
     return homepage
 
 @app.route("/mis")
@@ -56,8 +55,13 @@ def account():
         return render_template("account.html")
 
 @app.route("/read")
-def about():
-    return render_template("read.html")
+def read():
+    Result = ""
+    collection_ref = db.collection("靜宜資管")
+    docs = collection_ref.order_by("mail", direction=firestore.Query.DESCENDING).get()
+    for doc in docs:
+        Result += "文件內容：{}".format(doc.to_dict()) + "<br>"
+    return Result
     
 #if __name__ == "__main__":
  #   app.run()
