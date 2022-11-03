@@ -59,8 +59,9 @@ def read():
 
     if request.method == "POST":
         keyword = request.form["keyword"]
+
         result = keyword
 
-    return result
+        return result
     else:
         return render_template("read.html")
