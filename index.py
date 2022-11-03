@@ -62,12 +62,9 @@ def read():
 
     collection_ref = db.collection("111")
     docs = collection_ref.get()
-    
-    for doc in docs:
-        dict = doc.to_dict()
-        if keyword in dict["Course"]:
-            result = format(dict["Leacture"])
-        
-        return result
+
+    result = keyword
+
+    return result
     else:
         return render_template("read.html")
