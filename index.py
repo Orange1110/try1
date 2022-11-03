@@ -62,17 +62,11 @@ def read():
     docs = collection_ref.get()
 
     if request.method == "POST":
-        keyword = request.form["keyword"]
-        
-    for doc in docs:
-        dict = doc.to_dict()
-        if keyword in dict["Course"]:
-            Result += format(dict["Leacture"])+"老師開的"+format(dict["Course"])+"課程,每週"+format(dict["Time"])+"於"+format(dict["Room"])+"上課"
-       
-
+        keyword = request.form["keyword"]        
+        for doc in docs:
+            dict = doc.to_dict()
+            if keyword in dict["Course"]:
+                Result += format(dict["Leacture"])+"老師開的"+format(dict["Course"])+"課程,每週"+format(dict["Time"])+"於"+format(dict["Room"])+"上課"
     return Result
-
     else:
-        return render_template("account.html") 
-#if __name__ == "__main__":
- #   app.run()
+        return render_template("read.html") 
