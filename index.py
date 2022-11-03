@@ -64,3 +64,5 @@ def read():
         result = "您輸入的是：" + keyword
 
         return result
+    else:
+        return render_template("read.html")
