@@ -57,17 +57,16 @@ def account():
 @app.route("/read", methods=["GET", "POST"])
 def read():
 
+    if request.method == "POST":
+        keyword = request.form["keyword"]
+
     collection_ref = db.collection("111")
     docs = collection_ref.get()
     for doc in docs:
         dict = doc.to_dict()
+        if cond in dict["Course"]:
+        result += (format(dict["Leacture"])+"老師開的"+format(dict["Course"])+"課程,每週"+format(dict["Time"])+"於"+format(dict["Room"])+"上課")
         
-    if request.method == "POST":
-
-        keyword = request.form["keyword"]
-
-        result = "您輸入的是：" + keyword
-
         return result
     else:
         return render_template("read.html")
